@@ -46,7 +46,7 @@ module.exports = {
     "jsx-a11y/anchor-is-valid": "off",
     "react/jsx-curly-brace-presence": "warn",
     "react/prop-types": "warn",
-    "no-unused-vars": "warn",
+    "no-unused-vars": "error",
     "react/destructuring-assignment": "warn",
     "no-param-reassign": "off",
     "no-underscore-dangle": "off",
