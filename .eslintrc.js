@@ -3,34 +3,29 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    jest: true
+    jest: true,
   },
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
     "airbnb",
     "airbnb/hooks",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
   ],
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     ecmaVersion: 12,
-    sourceType: "module"
+    sourceType: "module",
   },
-  plugins: [
-    "react"
-  ],
+  plugins: ["react"],
   rules: {
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
-      }
+        extensions: [".js", ".jsx"],
+      },
     ],
     "prettier/prettier": [
       "error",
@@ -40,8 +35,8 @@ module.exports = {
         tabWidth: 2,
         useTabs: false,
         quoteProps: "preserve",
-        printWidth: 80
-      }
+        printWidth: 80,
+      },
     ],
     "react/react-in-jsx-scope": "off",
     camelcase: "off",
@@ -61,8 +56,8 @@ module.exports = {
     "react/function-component-definition": [
       "error",
       {
-        namedComponents: "function-declaration"
-      }
+        namedComponents: "function-declaration",
+      },
     ],
     "react/no-unstable-nested-components": "off",
     // Should be on for later
@@ -82,8 +77,8 @@ module.exports = {
         ignoreRefs: true,
         allowArrowFunctions: true,
         allowFunctions: true,
-        allowBind: true
-      }
-    ]
-  }
+        allowBind: true,
+      },
+    ],
+  },
 };
