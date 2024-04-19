@@ -1,5 +1,5 @@
 import { Button, List, ListItem, Stack } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import AppleIcon from "@mui/icons-material/Apple";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -11,6 +11,10 @@ import logo from "../../../assets/logo.svg";
 import "./header.css";
 
 export default function Header() {
+  const [showBurger, setShowBurger] = useState(false);
+  const showHide = () => {
+    setShowBurger(!showBurger);
+  };
   return (
     <Stack
       sx={{
@@ -38,11 +42,20 @@ export default function Header() {
       <Stack
         sx={{
           display: {
-            sm: "block",
-            xs: "block",
-            md: "block",
-            lg: "block",
+            xs: "flex",
+            sm: "flex",
+            md: "flex",
+            lg: "flex",
             xl: "none",
+          },
+          "& > button > svg": {
+            fontSize: {
+              xs: "15px",
+              sm: "15px",
+              md: "16px",
+              lg: "16px",
+              xl: "16px",
+            },
           },
         }}
         gap="1vw"
@@ -51,8 +64,8 @@ export default function Header() {
         <Button
           sx={{
             display: {
+              xs: "block",
               sm: "block",
-              xs: "none",
               md: "none",
               lg: "none",
               xl: "none",
@@ -61,6 +74,7 @@ export default function Header() {
             borderRadius: "10px",
             boxShadow: "0px 0px 15px 0px white",
           }}
+          onClick={showHide}
         >
           <MenuIcon />
         </Button>
@@ -74,9 +88,35 @@ export default function Header() {
           <SearchIcon />
         </Button>
       </Stack>
-      <Stack alignItems="center" gap="10px">
-        <img src={logo} width="129px" alt="" />
-        <Stack flexDirection="row" gap={2}>
+      <Stack
+        alignItems="center"
+        gap="10px"
+        sx={{
+          width: {
+            sx: "100px",
+            sm: "100px",
+            md: "129px",
+            lg: "129px",
+            xl: "129px",
+          },
+        }}
+      >
+        <img src={logo} width="100%" alt="" />
+        <Stack
+          flexDirection="row"
+          gap={2}
+          sx={{
+            "& > svg": {
+              fontSize: {
+                sx: "10px",
+                sm: "13px",
+                md: "18px",
+                lg: "18px",
+                xl: "18px",
+              },
+            },
+          }}
+        >
           <AppleIcon sx={{ color: "#686868", fontSize: "18px" }} />
           <InstagramIcon sx={{ color: "#686868", fontSize: "18px" }} />
           <FacebookIcon sx={{ color: "#686868", fontSize: "18px" }} />
@@ -84,19 +124,135 @@ export default function Header() {
         </Stack>
       </Stack>
       <List
-        sx={{
-          display: "flex",
-          gap: "1.5vw",
-          position: {
-            xs: "absolute",
-            sm: "absolute",
-            md: "absolute",
-            lg: "absolute",
-            xl: "static",
-          },
-          top: "100%",
-          justifyContent: "space-between",
-        }}
+        sx={
+          showBurger
+            ? {
+                display: {
+                  xs: "flex",
+                  sm: "flex",
+                  md: "flex",
+                  lg: "flex",
+                  xl: "flex",
+                },
+                gap: "1.5vw",
+                position: {
+                  xs: "absolute",
+                  sm: "absolute",
+                  md: "absolute",
+                  lg: "absolute",
+                  xl: "static",
+                },
+                top: {
+                  xs: "-10px",
+                  sm: "-10px",
+                  md: "100%",
+                  lg: "100%",
+                  xl: "100%",
+                },
+                left: {
+                  xs: "-5vw",
+                  sm: "-3vw",
+                  md: "0",
+                  lg: "0",
+                  xl: "0",
+                },
+                zIndex: "999",
+                justifyContent: "space-between",
+                "& > li > a": {
+                  fontSize: {
+                    xs: "13px",
+                    sm: "13px",
+                    md: "13px",
+                    lg: "17px",
+                    xl: "17px",
+                  },
+                },
+                flexDirection: {
+                  xs: "column",
+                  sm: "column",
+                  md: "row",
+                  lg: "row",
+                  xl: "row",
+                },
+                backgroundColor: {
+                  xs: "#1E2538",
+                  sm: "#1E2538",
+                  md: "transparent",
+                  lg: "transparent",
+                  xl: "transparent",
+                },
+                width: {
+                  xs: "100vw",
+                  sm: "100vw",
+                  md: "70vw",
+                  lg: "60vw",
+                  xl: "50vw",
+                },
+              }
+            : {
+                display: {
+                  xs: "none",
+                  sm: "none",
+                  md: "flex",
+                  lg: "flex",
+                  xl: "flex",
+                },
+                gap: "1.5vw",
+                position: {
+                  xs: "absolute",
+                  sm: "absolute",
+                  md: "absolute",
+                  lg: "absolute",
+                  xl: "static",
+                },
+                top: {
+                  xs: "-10px",
+                  sm: "-10px",
+                  md: "100%",
+                  lg: "100%",
+                  xl: "100%",
+                },
+                left: {
+                  xs: "-5vw",
+                  sm: "-3vw",
+                  md: "0",
+                  lg: "0",
+                  xl: "0",
+                },
+                zIndex: "999",
+                justifyContent: "space-between",
+                "& > li > a": {
+                  fontSize: {
+                    xs: "13px",
+                    sm: "13px",
+                    md: "13px",
+                    lg: "17px",
+                    xl: "17px",
+                  },
+                },
+                flexDirection: {
+                  xs: "column",
+                  sm: "column",
+                  md: "row",
+                  lg: "row",
+                  xl: "row",
+                },
+                backgroundColor: {
+                  xs: "#1E2538",
+                  sm: "#1E2538",
+                  md: "transparent",
+                  lg: "transparent",
+                  xl: "transparent",
+                },
+                width: {
+                  xs: "100vw",
+                  sm: "100vw",
+                  md: "70vw",
+                  lg: "60vw",
+                  xl: "50vw",
+                },
+              }
+        }
       >
         <ListItem>
           <Link to="/">Афиша</Link>
@@ -119,6 +275,20 @@ export default function Header() {
         <ListItem>
           <Link to="/categories">Категории</Link>
         </ListItem>
+        <Button
+          sx={{
+            display: {
+              xs: "block",
+              sm: "block",
+              md: "none",
+              lg: "none",
+              xl: "none",
+            },
+          }}
+          onClick={showHide}
+        >
+          X
+        </Button>
       </List>
       <Stack flexDirection="row" gap="5px">
         <Button

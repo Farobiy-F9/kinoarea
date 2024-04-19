@@ -16,6 +16,7 @@ export default function App() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        overflow: "hidden",
       }}
       height="400vh"
     >
