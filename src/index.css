@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Qanelas";
+  src: url(./utils/qanelas/QanelasBlack.otf);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,3 +16,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+

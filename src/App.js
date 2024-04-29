@@ -1,6 +1,5 @@
 import { Box } from "@mui/material";
 import React from "react";
-import Header from "./components/sections/header/header";
 import RouterCom from "./routes";
 import bg from "./assets/bg.png";
 
@@ -18,9 +17,8 @@ export default function App() {
         alignItems: "center",
         overflow: "hidden",
       }}
-      height="400vh"
+      // height="400vh"
     >
-      <Header />
       <RouterCom />
     </Box>
   );

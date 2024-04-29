@@ -321,7 +321,7 @@ export default function Header() {
             padding: "0 2vw",
           }}
         >
-          Войти
+          <Link to="login/">Войти</Link>
         </Button>
       </Stack>
     </Stack>
