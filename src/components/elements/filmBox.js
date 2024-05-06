@@ -1,7 +1,30 @@
+/* eslint-disable prefer-const */
 import { Box, Button, Stack, Typography } from "@mui/material";
-import React from "react";
+import React, { useState, useMemo, useRef, useContext, useEffect } from "react";
+// import { Bounce, ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function FilmBox({ item }) {
+  const [filmsList, setFilmsList] = useState([]);
+  const navigation = useNavigate();
+  const ShowDetail = () => {
+    navigation(`/films/${item.id}`);
+  };
+
+  const addCart = () => {
+    let film = filmsList;
+    film.push(item.id);
+    setFilmsList(film);
+    console.log(filmsList);
+
+    if (localStorage.getItem("films")) {
+      localStorage.setItem("films", JSON.stringify(filmsList));
+    } else {
+      localStorage.setItem("films", JSON.stringify([]));
+      localStorage.setItem("films", JSON.stringify(filmsList));
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -35,6 +58,7 @@ export default function FilmBox({ item }) {
           }}
         >
           <Button
+            onClick={addCart}
             sx={{
               backgroundColor: "white",
               color: "#3657CB",
@@ -63,12 +87,26 @@ export default function FilmBox({ item }) {
           6.70
         </Typography>
       </Stack>
-      <Stack>
+      <Stack onClick={ShowDetail}>
         <Typography variant="p">{item?.name}</Typography>
         <Typography variant="span" color="#F2F60F">
           {item.tags?.map((ele) => `${ele}, `)}
         </Typography>
       </Stack>
+
+      {/* <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Bounce}
+      /> */}
     </Box>
   );
 }
