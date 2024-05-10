@@ -1,0 +1,137 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "John",
+            "age": 30,
+            "gender": "male",
+            "email": "a@a.a",
+            "status": "active",
+            "password": "123",
+            "role": "admin",
+            "created_at": "2019-01-01T00:00:00.000Z",
+            "updated_at": "2019-01-01T00:00:00.000Z"
+        },
+        {
+            "id": 2,
+            "name": "Abubakr",
+            "age": 31,
+            "gender": "male",
+            "email": "abu@a.a",
+            "status": "active",
+            "password": "123",
+            "role": "admin",
+            "created_at": "2019-01-01T00:00:00.000Z",
+            "updated_at": "2019-01-01T00:00:00.000Z"
+        }
+    ],
+    "categories": [
+        {
+            "id": 1,
+            "name": "Category 1",
+            "created_at": "2019-01-01T00:00:00.000Z",
+            "updated_at": "2019-01-01T00:00:00.000Z"
+        },
+        {
+            "id": 2,
+            "name": "Category 2",
+            "created_at": "2019-01-01T00:00:00.000Z",
+            "updated_at": "2019-01-01T00:00:00.000Z"
+        }
+    ],
+    "films": [
+        {
+            "id": 0,
+            "name": "Побег из Претории",
+            "tags": ["Триллер", "драма", "криминал"],
+            "rating": {
+              "kinoare": "8.70",
+              "imdb": "6.70"
+            },
+            "description": "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
+            "author": "",
+            "film_origin_name": "Escape from Pretoria",
+            "likes": "12335",
+            "created_date": "2020",
+            "country": "Подбери ключ к свободе",
+            "fim_image": "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
+            "bg_image": ""
+          },
+          {
+            "id": 1,
+            "name": "Мстители",
+            "tags": ["Фантастика", "боевик", "приключения"],
+            "rating": {
+              "kinoare": "8.70",
+              "imdb": "6.70"
+            },
+            "description": "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
+            "author": "",
+            "film_origin_name": "Escape from Pretoria",
+            "likes": "12335",
+            "created_date": "2020",
+            "country": "Подбери ключ к свободе",
+            "fim_image": "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
+            "bg_image": ""
+          },
+          {
+            "id": 2,
+            "name": "Мстители",
+            "tags": ["Фантастика", "боевик", "приключения"],
+            "rating": {
+                "kinoare": "8.70",
+                "imdb": "6.70"
+            },
+            "description": "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Ш",
+            "author": "",
+            "film_origin_name": "Escape from Pretoria",
+            "likes": "12335",
+            "created_date": "2020",
+            "country": "Подбери ключ к свободе",
+            "fim_image": "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
+            "bg_image": ""
+          }
+    ],
+    "cart": [
+        {
+            "id": 1,
+            "user_id": 1,
+            "film_id": 1,
+            "created_at": "2019-01-01T00:00:00.000Z",
+            "updated_at": "2019-01-01T00:00:00.000Z"
+        },
+        {
+            "id": 2,
+            "user_id": 1,
+            "film_id": 2,
+            "created_at": "2019-01-01T00:00:00.000Z",
+            "updated_at": "2019-01-01T00:00:00.000Z"
+        },
+        {
+            "id": 3,
+            "user_id": 2,
+            "film_id": 3,
+            "created_at": "2019-01-01T00:00:00.000Z",
+            "updated_at": "2019-01-01T00:00:00.000Z"
+        },
+        {
+            "id": 3,
+            "user_id": 2,
+            "film_id": 1,
+            "created_at": "2019-01-01T00:00:00.000Z",
+            "updated_at": "2019-01-01T00:00:00.000Z"
+        }
+    ],
+    "followers": [
+        {
+            "id": 0,
+            "email": "a@a.a",
+            "created_at": "2019-01-01T00:00"
+        },
+        {
+            "id": 1,
+            "email": "abu@a.a",
+            "created_at": "2019-01-01T00:00"
+        }
+    ]
+}

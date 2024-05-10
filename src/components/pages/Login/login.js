@@ -25,7 +25,14 @@ export default function Login() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch(`${base_url}/users/`)
+    fetch(`${base_url}/users/`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        // token: "bearer ",
+      },
+    })
       .then((response) => response.json())
       .then((data) => setUsers(data))
       .then((err) => console.log(err));
