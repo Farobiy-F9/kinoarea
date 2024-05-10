@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import TextFieldInput from "../../elements/TextFieldInput";
+import { base_url } from "../../../store/base_url";
 // import { theme } from "../../../themes/theme";
 
 // const styles = (theme) =>
@@ -17,6 +18,31 @@ import TextFieldInput from "../../elements/TextFieldInput";
 //   });
 
 export default function Login() {
+  const emailRef = useRef("");
+  const passwordRef = useRef("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch(`${base_url}/users/`)
+      .then((response) => response.json())
+      .then((data) => setUsers(data))
+      .then((err) => console.log(err));
+  }, []);
+
+  const loginFun = () => {
+    const check = users.filter(
+      (user) =>
+        user.email === emailRef.current.value &&
+        user.password === passwordRef.current.value
+    );
+    if (check.length !== 0) {
+      alert("Вы успешно авторизовались");
+    } else {
+      alert("Неверный логин или пароль");
+    }
+  };
   return (
     <Box
       sx={{
@@ -61,8 +87,8 @@ export default function Login() {
         >
           Войти
         </Typography>
-        <TextFieldInput labelVal="Логин, почта или телефон" />
-        <TextFieldInput labelVal="Ваш пароль" />
+        <TextFieldInput refVal={emailRef} labelVal="Логин, почта или телефон" />
+        <TextFieldInput refVal={passwordRef} labelVal="Ваш пароль" />
         <Button
           variant="contained"
           sx={{
@@ -78,6 +104,8 @@ export default function Login() {
           }}
           fullWidth
           color="textFieldColor"
+          onClick={loginFun}
+          // disabled={email === "" && password === ""}
         >
           Войти
         </Button>

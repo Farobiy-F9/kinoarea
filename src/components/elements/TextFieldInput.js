@@ -2,10 +2,11 @@
 import { TextField } from "@mui/material";
 import React from "react";
 
-export default function TextFieldInput({ labelVal }) {
+export default function TextFieldInput({ labelVal, refVal }) {
   return (
     <TextField
       id="outlined-basic"
+      inputRef={refVal}
       fullWidth
       label={labelVal}
       variant="outlined"

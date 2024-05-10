@@ -1,17 +1,26 @@
 /* eslint-disable prefer-const */
 /* eslint-disable no-use-before-define */
 import { Box, Button, List, ListItem, Stack, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import kino1 from "../../../assets/kino1.png";
 import FilmBox from "../../elements/filmBox";
 import Header from "../../sections/header/header";
+import { base_url } from "../../../store/base_url";
 
 export default function Main() {
+  const [filmsList, setFilmsList] = useState([]);
   let navigate = useNavigate();
   const RedirectAllFilms = () => {
     navigate("/films");
   };
+
+  useEffect(() => {
+    fetch(`${base_url}/films`)
+      .then((response) => response.json())
+      .then((data) => setFilmsList(data))
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <>
@@ -148,7 +157,7 @@ export default function Main() {
           flexWrap="wrap"
           justifyContent="space-between"
         >
-          {data?.slice(0, 8).map((item) => (
+          {filmsList?.slice(0, 8).map((item) => (
             <FilmBox item={item} key={item.id} />
           ))}
         </Stack>
@@ -158,271 +167,271 @@ export default function Main() {
   );
 }
 
-const data = [
-  {
-    id: 0,
-    name: "Побег из Претории",
-    tags: ["Триллер", "драма", "криминал"],
-    rating: {
-      kinoare: "8.70",
-      imdb: "6.70",
-    },
-    description:
-      "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
-    author: "",
-    film_origin_name: "Escape from Pretoria",
-    likes: "12335",
-    created_date: "2020",
-    country: "Подбери ключ к свободе",
-    fim_image:
-      "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
-    bg_image: "",
-  },
-  {
-    id: 1,
-    name: "Побег из Претории",
-    tags: ["Триллер", "драма", "криминал"],
-    rating: {
-      kinoare: "8.70",
-      imdb: "6.70",
-    },
-    description:
-      "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
-    author: "",
-    film_origin_name: "Escape from Pretoria",
-    likes: "12335",
-    created_date: "2020",
-    country: "Подбери ключ к свободе",
-    fim_image:
-      "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
-    bg_image: "",
-  },
-  {
-    id: 2,
-    name: "Побег из Претории",
-    tags: ["Триллер", "драма", "криминал"],
-    rating: {
-      kinoare: "8.70",
-      imdb: "6.70",
-    },
-    description:
-      "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
-    author: "",
-    film_origin_name: "Escape from Pretoria",
-    likes: "12335",
-    created_date: "2020",
-    country: "Подбери ключ к свободе",
-    fim_image:
-      "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
-    bg_image: "",
-  },
-  {
-    id: 3,
-    name: "Побег из Претории",
-    tags: ["Триллер", "драма", "криминал"],
-    rating: {
-      kinoare: "8.70",
-      imdb: "6.70",
-    },
-    description:
-      "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
-    author: "",
-    film_origin_name: "Escape from Pretoria",
-    likes: "12335",
-    created_date: "2020",
-    country: "Подбери ключ к свободе",
-    fim_image:
-      "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
-    bg_image: "",
-  },
-  {
-    id: 4,
-    name: "Побег из Претории",
-    tags: ["Триллер", "драма", "криминал"],
-    rating: {
-      kinoare: "8.70",
-      imdb: "6.70",
-    },
-    description:
-      "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
-    author: "",
-    film_origin_name: "Escape from Pretoria",
-    likes: "12335",
-    created_date: "2020",
-    country: "Подбери ключ к свободе",
-    fim_image:
-      "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
-    bg_image: "",
-  },
-  {
-    id: 5,
-    name: "Побег из Претории",
-    tags: ["Триллер", "драма", "криминал"],
-    rating: {
-      kinoare: "8.70",
-      imdb: "6.70",
-    },
-    description:
-      "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
-    author: "",
-    film_origin_name: "Escape from Pretoria",
-    likes: "12335",
-    created_date: "2020",
-    country: "Подбери ключ к свободе",
-    fim_image:
-      "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
-    bg_image: "",
-  },
-  {
-    id: 6,
-    name: "Побег из Претории",
-    tags: ["Триллер", "драма", "криминал"],
-    rating: {
-      kinoare: "8.70",
-      imdb: "6.70",
-    },
-    description:
-      "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
-    author: "",
-    film_origin_name: "Escape from Pretoria",
-    likes: "12335",
-    created_date: "2020",
-    country: "Подбери ключ к свободе",
-    fim_image:
-      "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
-    bg_image: "",
-  },
-  {
-    id: 7,
-    name: "Побег из Претории",
-    tags: ["Триллер", "драма", "криминал"],
-    rating: {
-      kinoare: "8.70",
-      imdb: "6.70",
-    },
-    description:
-      "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
-    author: "",
-    film_origin_name: "Escape from Pretoria",
-    likes: "12335",
-    created_date: "2020",
-    country: "Подбери ключ к свободе",
-    fim_image:
-      "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
-    bg_image: "",
-  },
-  {
-    id: 8,
-    name: "Побег из Претории",
-    tags: ["Триллер", "драма", "криминал"],
-    rating: {
-      kinoare: "8.70",
-      imdb: "6.70",
-    },
-    description:
-      "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
-    author: "",
-    film_origin_name: "Escape from Pretoria",
-    likes: "12335",
-    created_date: "2020",
-    country: "Подбери ключ к свободе",
-    fim_image:
-      "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
-    bg_image: "",
-  },
-  {
-    id: 9,
-    name: "Побег из Претории",
-    tags: ["Триллер", "драма", "криминал"],
-    rating: {
-      kinoare: "8.70",
-      imdb: "6.70",
-    },
-    description:
-      "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
-    author: "",
-    film_origin_name: "Escape from Pretoria",
-    likes: "12335",
-    created_date: "2020",
-    country: "Подбери ключ к свободе",
-    fim_image:
-      "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
-    bg_image: "",
-  },
-  {
-    id: 10,
-    name: "Побег из Претории",
-    tags: ["Триллер", "драма", "криминал"],
-    rating: {
-      kinoare: "8.70",
-      imdb: "6.70",
-    },
-    description:
-      "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
-    author: "",
-    film_origin_name: "Escape from Pretoria",
-    likes: "12335",
-    created_date: "2020",
-    country: "Подбери ключ к свободе",
-    fim_image:
-      "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
-    bg_image: "",
-  },
-  {
-    id: 11,
-    name: "Побег из Претории",
-    tags: ["Триллер", "драма", "криминал"],
-    rating: {
-      kinoare: "8.70",
-      imdb: "6.70",
-    },
-    description:
-      "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
-    author: "",
-    film_origin_name: "Escape from Pretoria",
-    likes: "12335",
-    created_date: "2020",
-    country: "Подбери ключ к свободе",
-    fim_image:
-      "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
-    bg_image: "",
-  },
-  {
-    id: 12,
-    name: "Побег из Претории",
-    tags: ["Триллер", "драма", "криминал"],
-    rating: {
-      kinoare: "8.70",
-      imdb: "6.70",
-    },
-    description:
-      "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
-    author: "",
-    film_origin_name: "Escape from Pretoria",
-    likes: "12335",
-    created_date: "2020",
-    country: "Подбери ключ к свободе",
-    fim_image:
-      "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
-    bg_image: "",
-  },
-  {
-    id: 13,
-    name: "Побег из Претории",
-    tags: ["Триллер", "драма", "криминал"],
-    rating: {
-      kinoare: "8.70",
-      imdb: "6.70",
-    },
-    description:
-      "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
-    author: "",
-    film_origin_name: "Escape from Pretoria",
-    likes: "12335",
-    created_date: "2020",
-    country: "Подбери ключ к свободе",
-    fim_image:
-      "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
-    bg_image: "",
-  },
-];
+// const data = [
+//   {
+//     id: 0,
+//     name: "Побег из Претории",
+//     tags: ["Триллер", "драма", "криминал"],
+//     rating: {
+//       kinoare: "8.70",
+//       imdb: "6.70",
+//     },
+//     description:
+//       "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
+//     author: "",
+//     film_origin_name: "Escape from Pretoria",
+//     likes: "12335",
+//     created_date: "2020",
+//     country: "Подбери ключ к свободе",
+//     fim_image:
+//       "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
+//     bg_image: "",
+//   },
+//   {
+//     id: 1,
+//     name: "Побег из Претории",
+//     tags: ["Триллер", "драма", "криминал"],
+//     rating: {
+//       kinoare: "8.70",
+//       imdb: "6.70",
+//     },
+//     description:
+//       "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
+//     author: "",
+//     film_origin_name: "Escape from Pretoria",
+//     likes: "12335",
+//     created_date: "2020",
+//     country: "Подбери ключ к свободе",
+//     fim_image:
+//       "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
+//     bg_image: "",
+//   },
+//   {
+//     id: 2,
+//     name: "Побег из Претории",
+//     tags: ["Триллер", "драма", "криминал"],
+//     rating: {
+//       kinoare: "8.70",
+//       imdb: "6.70",
+//     },
+//     description:
+//       "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
+//     author: "",
+//     film_origin_name: "Escape from Pretoria",
+//     likes: "12335",
+//     created_date: "2020",
+//     country: "Подбери ключ к свободе",
+//     fim_image:
+//       "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
+//     bg_image: "",
+//   },
+//   {
+//     id: 3,
+//     name: "Побег из Претории",
+//     tags: ["Триллер", "драма", "криминал"],
+//     rating: {
+//       kinoare: "8.70",
+//       imdb: "6.70",
+//     },
+//     description:
+//       "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
+//     author: "",
+//     film_origin_name: "Escape from Pretoria",
+//     likes: "12335",
+//     created_date: "2020",
+//     country: "Подбери ключ к свободе",
+//     fim_image:
+//       "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
+//     bg_image: "",
+//   },
+//   {
+//     id: 4,
+//     name: "Побег из Претории",
+//     tags: ["Триллер", "драма", "криминал"],
+//     rating: {
+//       kinoare: "8.70",
+//       imdb: "6.70",
+//     },
+//     description:
+//       "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
+//     author: "",
+//     film_origin_name: "Escape from Pretoria",
+//     likes: "12335",
+//     created_date: "2020",
+//     country: "Подбери ключ к свободе",
+//     fim_image:
+//       "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
+//     bg_image: "",
+//   },
+//   {
+//     id: 5,
+//     name: "Побег из Претории",
+//     tags: ["Триллер", "драма", "криминал"],
+//     rating: {
+//       kinoare: "8.70",
+//       imdb: "6.70",
+//     },
+//     description:
+//       "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
+//     author: "",
+//     film_origin_name: "Escape from Pretoria",
+//     likes: "12335",
+//     created_date: "2020",
+//     country: "Подбери ключ к свободе",
+//     fim_image:
+//       "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
+//     bg_image: "",
+//   },
+//   {
+//     id: 6,
+//     name: "Побег из Претории",
+//     tags: ["Триллер", "драма", "криминал"],
+//     rating: {
+//       kinoare: "8.70",
+//       imdb: "6.70",
+//     },
+//     description:
+//       "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
+//     author: "",
+//     film_origin_name: "Escape from Pretoria",
+//     likes: "12335",
+//     created_date: "2020",
+//     country: "Подбери ключ к свободе",
+//     fim_image:
+//       "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
+//     bg_image: "",
+//   },
+//   {
+//     id: 7,
+//     name: "Побег из Претории",
+//     tags: ["Триллер", "драма", "криминал"],
+//     rating: {
+//       kinoare: "8.70",
+//       imdb: "6.70",
+//     },
+//     description:
+//       "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
+//     author: "",
+//     film_origin_name: "Escape from Pretoria",
+//     likes: "12335",
+//     created_date: "2020",
+//     country: "Подбери ключ к свободе",
+//     fim_image:
+//       "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
+//     bg_image: "",
+//   },
+//   {
+//     id: 8,
+//     name: "Побег из Претории",
+//     tags: ["Триллер", "драма", "криминал"],
+//     rating: {
+//       kinoare: "8.70",
+//       imdb: "6.70",
+//     },
+//     description:
+//       "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
+//     author: "",
+//     film_origin_name: "Escape from Pretoria",
+//     likes: "12335",
+//     created_date: "2020",
+//     country: "Подбери ключ к свободе",
+//     fim_image:
+//       "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
+//     bg_image: "",
+//   },
+//   {
+//     id: 9,
+//     name: "Побег из Претории",
+//     tags: ["Триллер", "драма", "криминал"],
+//     rating: {
+//       kinoare: "8.70",
+//       imdb: "6.70",
+//     },
+//     description:
+//       "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
+//     author: "",
+//     film_origin_name: "Escape from Pretoria",
+//     likes: "12335",
+//     created_date: "2020",
+//     country: "Подбери ключ к свободе",
+//     fim_image:
+//       "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
+//     bg_image: "",
+//   },
+//   {
+//     id: 10,
+//     name: "Побег из Претории",
+//     tags: ["Триллер", "драма", "криминал"],
+//     rating: {
+//       kinoare: "8.70",
+//       imdb: "6.70",
+//     },
+//     description:
+//       "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
+//     author: "",
+//     film_origin_name: "Escape from Pretoria",
+//     likes: "12335",
+//     created_date: "2020",
+//     country: "Подбери ключ к свободе",
+//     fim_image:
+//       "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
+//     bg_image: "",
+//   },
+//   {
+//     id: 11,
+//     name: "Побег из Претории",
+//     tags: ["Триллер", "драма", "криминал"],
+//     rating: {
+//       kinoare: "8.70",
+//       imdb: "6.70",
+//     },
+//     description:
+//       "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
+//     author: "",
+//     film_origin_name: "Escape from Pretoria",
+//     likes: "12335",
+//     created_date: "2020",
+//     country: "Подбери ключ к свободе",
+//     fim_image:
+//       "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
+//     bg_image: "",
+//   },
+//   {
+//     id: 12,
+//     name: "Побег из Претории",
+//     tags: ["Триллер", "драма", "криминал"],
+//     rating: {
+//       kinoare: "8.70",
+//       imdb: "6.70",
+//     },
+//     description:
+//       "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
+//     author: "",
+//     film_origin_name: "Escape from Pretoria",
+//     likes: "12335",
+//     created_date: "2020",
+//     country: "Подбери ключ к свободе",
+//     fim_image:
+//       "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
+//     bg_image: "",
+//   },
+//   {
+//     id: 13,
+//     name: "Побег из Претории",
+//     tags: ["Триллер", "драма", "криминал"],
+//     rating: {
+//       kinoare: "8.70",
+//       imdb: "6.70",
+//     },
+//     description:
+//       "Двое борцов за свободу отбывают срок в одной из самых строгих тюрем мира — в «Претории». Вместе с другими узниками они планируют дерзкий и опасный побег. Но придумать план — это только первый шаг. Шаг второй — реализация плана.",
+//     author: "",
+//     film_origin_name: "Escape from Pretoria",
+//     likes: "12335",
+//     created_date: "2020",
+//     country: "Подбери ключ к свободе",
+//     fim_image:
+//       "https://upload.wikimedia.org/wikipedia/en/8/86/Escape_from_Pretoria_film_poster.png",
+//     bg_image: "",
+//   },
+// ];
