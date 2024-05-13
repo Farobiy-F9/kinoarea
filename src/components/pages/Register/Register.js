@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable prefer-const */
 import React, { useEffect, useRef, useState } from "react";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
@@ -17,9 +19,12 @@ import { base_url } from "../../../store/base_url";
 //     },
 //   });
 
-export default function Login() {
+export default function Register() {
   const emailRef = useRef("");
   const passwordRef = useRef("");
+  const nameRef = useRef("");
+  const ageRef = useRef("");
+  const genderRef = useRef("");
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState("");
   const [users, setUsers] = useState([]);
@@ -40,17 +45,37 @@ export default function Login() {
   }, []);
 
   const loginFun = () => {
-    const check = users.filter(
-      (user) =>
-        user.email === emailRef.current.value &&
-        user.password === passwordRef.current.value
-    );
-    if (check.length !== 0 && check.length <= 1) {
-      alert("Вы успешно авторизовались");
-      localStorage.setItem("user", JSON.stringify(...check));
-      navigate("/");
+    const check = users.filter((user) => user.email === emailRef.current.value);
+    if (check.length !== 0) {
+      alert("Alredy exsist");
     } else {
-      alert("Неверный логин или пароль");
+      let currentDate = new Date();
+      let isoString = currentDate.toISOString();
+
+      let info = {
+        name: nameRef.current.value,
+        age: ageRef.current.value,
+        gender: genderRef.current.value,
+        email: emailRef.current.value,
+        status: "active",
+        password: passwordRef.current.value,
+        role: "admin",
+        created_at: isoString,
+        updated_at: isoString,
+      };
+      fetch(`${base_url}/users/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          // token: "bearer ",
+        },
+        body: JSON.stringify(info),
+      })
+        .then((response) => response.json())
+        .then((data) => localStorage.setItem("user", JSON.stringify(data)))
+        .catch((err) => console.log(err));
+      navigate("/");
     }
   };
   return (
@@ -98,7 +123,10 @@ export default function Login() {
           Войти
         </Typography>
         <TextFieldInput refVal={emailRef} labelVal="Логин, почта или телефон" />
+        <TextFieldInput refVal={nameRef} labelVal="Name" />
         <TextFieldInput refVal={passwordRef} labelVal="Ваш пароль" />
+        <TextFieldInput refVal={ageRef} labelVal="Age" />
+        <TextFieldInput refVal={genderRef} labelVal="Gender" />
         <Button
           variant="contained"
           sx={{
@@ -135,8 +163,23 @@ export default function Login() {
           fullWidth
           color="textFieldColor"
         >
-          <Link to="/register">Зарегистрироваться</Link>
+          Зарегистрироваться
         </Button>
+        <Link
+          to="/reset-password"
+          style={{
+            color: "#3657CB",
+            textAlign: "center",
+            fontFamily: "Qanelas",
+            fontSize: "17px",
+            fontStyle: "normal",
+            fontWeight: "500",
+            lineHeight: "166.5%",
+            textDecorationLine: "underline",
+          }}
+        >
+          Восстановить пароль
+        </Link>
       </Stack>
     </Box>
   );

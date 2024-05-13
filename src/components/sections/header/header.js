@@ -1,5 +1,5 @@
 import { Button, List, ListItem, Stack } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AppleIcon from "@mui/icons-material/Apple";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -12,9 +12,18 @@ import "./header.css";
 
 export default function Header() {
   const [showBurger, setShowBurger] = useState(false);
+  const [userInfo, setUserInfo] = useState(null);
+
   const showHide = () => {
     setShowBurger(!showBurger);
   };
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      // setShowBurger(true);
+      setUserInfo(user);
+    }
+  }, []);
   return (
     <Stack
       sx={{
@@ -307,22 +316,26 @@ export default function Header() {
         >
           <SearchIcon />
         </Button>
-        <Button
-          sx={{
-            borderRadius: "10px",
-            background: "#3657CB",
-            boxShadow: "0px 0px 15px 0px rgba(72, 113, 255, 0.80)",
-            color: "#FFF",
-            fontFamily: "Qanelas",
-            fontSize: "16px",
-            fontStyle: "normal",
-            fontWeight: 700,
-            lineHeight: "166.5%",
-            padding: "0 2vw",
-          }}
-        >
-          <Link to="login/">Войти</Link>
-        </Button>
+        {userInfo && userInfo !== null ? (
+          userInfo.name
+        ) : (
+          <Button
+            sx={{
+              borderRadius: "10px",
+              background: "#3657CB",
+              boxShadow: "0px 0px 15px 0px rgba(72, 113, 255, 0.80)",
+              color: "#FFF",
+              fontFamily: "Qanelas",
+              fontSize: "16px",
+              fontStyle: "normal",
+              fontWeight: 700,
+              lineHeight: "166.5%",
+              padding: "0 2vw",
+            }}
+          >
+            <Link to="login/">Войти</Link>
+          </Button>
+        )}
       </Stack>
     </Stack>
   );
